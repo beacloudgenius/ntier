@@ -16,16 +16,22 @@ resource "aws_instance" "nat" {
     user        = "ubuntu"
     private_key = file("~/.ssh/id_rsa")
   }
+
+  /* To allow LAN nodes with private IP addresses to communicate with external public networks,
+     configure the firewall for IP masquerading, which masks requests from LAN nodes with the
+     IP address of the firewall's external device (in this case, eth0):
+  */
+
   provisioner "remote-exec" {
     inline = [
-      "sudo iptables -t nat -A POSTROUTING -j MASQUERADE",
+      "sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE",
       "echo 1 | sudo tee /proc/sys/net/ipv4/conf/all/forwarding",
       "sudo apt-get update",
       "sudo apt-get -y install apt-transport-https ca-certificates curl gnupg-agent software-properties-common",
       "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -",
-      "sudo add-apt-repository 'deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable'",
+      "sudo add-apt-repository 'deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable'",
       "sudo apt-get update",
-      "sudo apt-get -y install docker-ce",
+      "sudo apt-get -y install docker-ce docker-ce-cli containerd.io",
       "sudo usermod -aG docker ubuntu",
       "sudo apt-get -y install vim",
       "sudo mkdir -p /etc/openvpn",
