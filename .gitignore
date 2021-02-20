@@ -3,3 +3,4 @@
 *.tfstate*
 *.ovpn
 terraform/.terraform
+terraform/.terraform.lock.hcl

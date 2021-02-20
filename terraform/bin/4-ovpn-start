@@ -1,4 +1,4 @@
-ssh -t -i ~/.ssh/id_rsa "ubuntu@$(terraform output natIP)" \
+ssh -t -i ~/.ssh/id_rsa ubuntu@$(terraform output -raw natIP) \
   sudo docker run \
     --volumes-from ovpn-data \
     -d \
