@@ -15,7 +15,7 @@ resource "aws_route_table" "private" {
   vpc_id = aws_vpc.default.id
   route {
     cidr_block  = "0.0.0.0/0"
-    instance_id = aws_instance.nat.id
+    gateway_id = aws_instance.nat.id
   }
   tags = {
     Name = "my private RT"
