@@ -1,9 +1,11 @@
 variable "access_key" {
   description = "AWS access key"
+  sensitive = true
 }
 
 variable "secret_key" {
   description = "AWS secret access key"
+  sensitive = true
 }
 
 variable "region" {
