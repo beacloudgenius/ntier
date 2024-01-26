@@ -33,14 +33,14 @@ variable "private_subnet_cidr" {
   default     = "10.128.1.0/24"
 }
 
-/* Ubuntu bionic 18.04 AMIs by region */
+/* Ubuntu jammy 22.04 AMIs by region */
 variable "amis" {
   description = "Base AMI to launch the instances with"
   default = {
     us-gov-east-1 = "ami-73db3802"
     us-gov-west-1 = "ami-99f6aaf8"
     us-west-2 = "ami-0a7d051a1c4b54f65"
-    us-west-1 = "ami-0f42d8c4eb586ccf7"
+	us-west-1	=	"ami-0ce2cb35386fc22e9"
     us-east-2 = "ami-059d836af932792c3"
     us-east-1 = "ami-00a208c7cdba991ea"
     sa-east-1 = "ami-049f5d88d2d436431"
