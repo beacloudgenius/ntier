@@ -3,7 +3,7 @@ resource "aws_instance" "nat" {
   ami               = var.amis[var.region]
   instance_type     = "t2.micro"
   subnet_id         = aws_subnet.public.id
-  security_groups   = [aws_security_group.default.id, aws_security_group.nat.id]
+  security_groups   = [aws_security_group.common.id, aws_security_group.nat.id]
   key_name          = aws_key_pair.deployer.key_name
   associate_public_ip_address = true
   source_dest_check = false

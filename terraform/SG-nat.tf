@@ -1,6 +1,6 @@
 /* Security group for the nat server */
 resource "aws_security_group" "nat" {
-  name        = "nat-automated-vpc"
+  name        = "SG-nat-automated-vpc"
   description = "Security group for nat instances that allows SSH and VPN traffic from internet"
   vpc_id      = aws_vpc.default.id
 

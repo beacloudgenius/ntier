@@ -4,7 +4,7 @@ resource "aws_instance" "app" {
   ami               = var.amis[var.region]
   instance_type     = "t2.micro"
   subnet_id         = aws_subnet.private.id
-  security_groups   = [aws_security_group.default.id]
+  security_groups   = [aws_security_group.common.id]
   key_name          = aws_key_pair.deployer.key_name
   source_dest_check = true
   user_data         = file("cloud-config/app.yml")
@@ -17,7 +17,7 @@ resource "aws_instance" "app" {
 resource "aws_elb" "app" {
   name            = "automated-vpc-elb"
   subnets         = [aws_subnet.public.id]
-  security_groups = [aws_security_group.default.id, aws_security_group.web.id]
+  security_groups = [aws_security_group.common.id, aws_security_group.web.id]
   listener {
     instance_port     = 80
     instance_protocol = "http"
@@ -35,4 +35,3 @@ resource "aws_elb" "app" {
 
   instances = aws_instance.app.*.id
 }
-

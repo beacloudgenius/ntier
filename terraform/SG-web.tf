@@ -1,6 +1,6 @@
 /* Security group for the web */
 resource "aws_security_group" "web" {
-  name        = "web-automated-vpc"
+  name        = "SG-web-automated-vpc"
   description = "Security group for web that allows web traffic from internet"
   vpc_id      = aws_vpc.default.id
 

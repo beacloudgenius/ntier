@@ -1,7 +1,7 @@
-/* Default security group */
-resource "aws_security_group" "default" {
-  name        = "default-automated-vpc"
-  description = "Default security group that allows inbound and outbound traffic from all instances in the VPC"
+/* Common security group */
+resource "aws_security_group" "common" {
+  name        = "SG-common-automated-vpc"
+  description = "common security group that allows inbound and outbound traffic from all instances in the VPC"
   vpc_id      = aws_vpc.default.id
 
   ingress {
@@ -19,6 +19,6 @@ resource "aws_security_group" "default" {
   }
 
   tags = {
-    Name = "default"
+    Name = "common"
   }
 }
