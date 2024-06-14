@@ -1,8 +1,3 @@
-/* Internet gateway for the public subnet */
-resource "aws_internet_gateway" "default" {
-  vpc_id = aws_vpc.default.id
-}
-
 /* Public subnet */
 resource "aws_subnet" "public" {
   vpc_id                  = aws_vpc.default.id
@@ -32,4 +27,3 @@ resource "aws_route_table_association" "public" {
   subnet_id      = aws_subnet.public.id
   route_table_id = aws_route_table.public.id
 }
-
