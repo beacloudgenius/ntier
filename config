@@ -1,20 +1,22 @@
 # example ssh configuration for using Vibhishan/proxy/nat/jumpbox/bastian to access app-0 and app-1
 
 Host jumpbox
-HostName 18.144.32.75
-ForwardAgent yes
-StrictHostKeyChecking ask
-IdentityFile ~/.ssh/id_rsa
-User ubuntu
+	HostName 18.144.32.75
+	ForwardAgent yes
+	StrictHostKeyChecking ask
+	IdentityFile ~/.ssh/id_rsa
+	User ubuntu
 
-Host 10.128.1.32
-ProxyCommand ssh -q -W %h:%p jumpbox
-ForwardAgent yes
-IdentityFile ~/.ssh/id_rsa
-User ubuntu
+Host app-0
+	HostName 10.128.1.32
+	ProxyCommand ssh -q -W %h:%p jumpbox
+	ForwardAgent yes
+	IdentityFile ~/.ssh/id_rsa
+	User ubuntu
 
-Host 10.128.1.212
-ProxyCommand ssh -q -W %h:%p jumpbox
-ForwardAgent yes
-IdentityFile ~/.ssh/id_rsa
-User ubuntu
+Host app-1
+	HostName 10.128.1.212
+	ProxyCommand ssh -q -W %h:%p jumpbox
+	ForwardAgent yes
+	IdentityFile ~/.ssh/id_rsa
+	User ubuntu
