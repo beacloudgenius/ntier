@@ -1,4 +1,11 @@
-# example ssh configuration for using Vibhishan/proxy/nat/jumpbox/bastian to access app-0 and app-1
+# example ssh configuration for using
+	# Vibhishan
+	# proxy
+	# nat
+	# jumpbox
+	# bastian
+	# backdoor
+# to access app-0 and app-1
 
 Host jumpbox
 	HostName 18.144.32.75
